@@ -19,7 +19,7 @@ const database = [
         type: "site", // 'site' - bu veb-sayt uchun
         name: "DualStackSecurity Link Detective",
         description: "Linklarning xavfsizligini tekshirish, virus yoki fishingdan saqlanish.",
-        url: "https://DualStackSecurityDetective.netlify.app" // Haqiqiy sayt manzili
+        url: "https://https://dualstacklink.vercel.app/" // Haqiqiy sayt manzili
     },
     {
         id: 4,
