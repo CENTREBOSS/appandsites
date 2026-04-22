@@ -24,9 +24,9 @@ const database = [
     {
         id: 4,
         type: "site",
-        name: "DualStack Admin Panel",
-        description: "Xodimlar va mijozlarni boshqarish uchun tizim.",
-        url: "https://admin.dualstacksecurity.com"
+        name: "DualStackSecurity INFO",
+        description: "DSS haqida ma'lumotlar.",
+        url: "https://DualStackSecurity.vercel.app"
     }
 ];
 
