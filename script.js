@@ -1,81 +1,97 @@
-// 1. MA'LUMOTLAR BAZASI (Shu yerni tahrirlashingiz mumkin)
+// --- MA'LUMOTLAR BAZASI (Siz shu yerdan tahrirlaysiz) ---
 const database = [
     {
         id: 1,
-        title: "Security Shield App",
-        description: "Android uchun kuchli antivirus va himoya.",
-        link: "https://example.com/files/security-shield.apk",
-        type: "app" // APK yuklab olish uchun
+        type: "app", // 'app' - bu ilova uchun
+        name: "DualStack Secure Mobile",
+        description: "Mobil qurilmalar uchun kuchaytirilgan xavfsizlik ilovasi.",
+        url: "./files/dualstack-secure.apk" // APK faylingizning saytdagi manzili
     },
     {
         id: 2,
-        title: "Link detective",
-        description: "Link xavfsizligini tekshiruvchi sayt.",
-        link: "https://dualstacksecuritydetective.netlify.app",
-        type: "site" // Brauzerda ochish uchun
+        type: "app",
+        name: "DualStack VPN 2023",
+        description: "Korporativ tarmoqqa xavfsiz ulanish uchun VPN mijoz.",
+        url: "./files/dualstack-vpn.apk"
     },
     {
         id: 3,
-        title: "Cyber Monitoring",
-        description: "Tizimni real vaqtda kuzatish ilovasi.",
-        link: "https://mysite.uz/app.apk",
-        type: "app"
+        type: "site", // 'site' - bu veb-sayt uchun
+        name: "DualStack Cloud Security",
+        description: "Bulutli ma'lumotlar ombori va xavfsizlik portali.",
+        url: "https://cloud.dualstacksecurity.com" // Haqiqiy sayt manzili
+    },
+    {
+        id: 4,
+        type: "site",
+        name: "DualStack Admin Panel",
+        description: "Xodimlar va mijozlarni boshqarish uchun tizim.",
+        url: "https://admin.dualstacksecurity.com"
     }
 ];
 
-// 2. ELEMENTLARNI EKRANGA CHIQARISH
-const appContainer = document.getElementById('app-container');
-const siteContainer = document.getElementById('site-container');
+// Dastur ishga tushganda ishlashi kerak bo'lgan funksiyalar
+document.addEventListener("DOMContentLoaded", () => {
+    renderItems();
+    setupSupportForm();
+});
 
-function loadData() {
+// Ma'lumotlarni HTML ga chizish (Render) funksiyasi
+function renderItems() {
+    const appsContainer = document.getElementById("apps-container");
+    const sitesContainer = document.getElementById("sites-container");
+
     database.forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'card';
+        // Karta (Card) yaratamiz
+        const card = document.createElement("div");
+        card.className = "card";
         
+        let buttonHTML = "";
+
+        // Agar turi 'app' bo'lsa (Yuklab olish tugmasi)
+        if (item.type === "app") {
+            buttonHTML = `<a href="${item.url}" download class="btn btn-download">APK Yuklab olish</a>`;
+        } 
+        // Agar turi 'site' bo'lsa (Saytga kirish tugmasi)
+        else if (item.type === "site") {
+            buttonHTML = `<a href="${item.url}" target="_blank" class="btn btn-visit">Saytga kirish</a>`;
+        }
+
+        // Kartaning ichki qismini yozamiz
         card.innerHTML = `
-            <h3>${item.title}</h3>
+            <h3>${item.name}</h3>
             <p>${item.description}</p>
-            <button class="btn" onclick="handleAction('${item.link}', '${item.type}')">
-                ${item.type === 'app' ? 'Yuklab olish (APK)' : 'Saytga o'tish'}
-            </button>
+            ${buttonHTML}
         `;
 
-        if (item.type === 'app') {
-            appContainer.appendChild(card);
-        } else {
-            siteContainer.appendChild(card);
+        // Tegishli bo'limga qo'shamiz
+        if (item.type === "app") {
+            appsContainer.appendChild(card);
+        } else if (item.type === "site") {
+            sitesContainer.appendChild(card);
         }
     });
 }
 
-// 3. YUKLAB OLISH YOKI SAYTNI OCHISH LOGIKASI
-function handleAction(link, type) {
-    if (type === 'app') {
-        // APK faylni yuklab olish uchun "download" atributini simulyatsiya qilamiz
-        const anchor = document.createElement('a');
-        anchor.href = link;
-        anchor.download = ''; 
-        anchor.target = '_blank';
-        anchor.click();
-    } else {
-        // Saytni yangi oynada ochish
-        window.open(link, '_blank');
-    }
+// Qo'llab-quvvatlash qismi (Support Form)
+function setupSupportForm() {
+    const form = document.getElementById("support-form");
+    
+    form.addEventListener("submit", (e) => {
+        e.preventDefault(); // Sayt yangilanib ketishining oldini olish
+        
+        const name = document.getElementById("user-name").value;
+        const message = document.getElementById("user-message").value;
+        
+        // Email manzili va xat mazmunini tayyorlash
+        const email = "DualStackSecurity@gmail.com";
+        const subject = encodeURIComponent("Support - Dual Stack Security");
+        const body = encodeURIComponent(`Ism: ${name}\n\nXabar:\n${message}`);
+        
+        // Foydalanuvchining default pochta dasturini ochish (mailto)
+        window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+        
+        // Formani tozalash
+        form.reset();
+    });
 }
-
-// 4. SUPPORT (EMAIL) FUNKSIYASI
-document.getElementById('contact-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const email = "DualStackSecurity@gmail.com";
-    const subject = document.getElementById('subject').value;
-    const body = document.getElementById('message').value;
-    
-    // Default email klienti ochiladi
-    const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    
-    window.location.href = mailtoLink;
-});
-
-// Sayt yuklanganda ma'lumotlarni chiqarish
-window.onload = loadData;
