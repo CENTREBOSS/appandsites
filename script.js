@@ -17,9 +17,9 @@ const database = [
     {
         id: 3,
         type: "site", // 'site' - bu veb-sayt uchun
-        name: "DualStack Cloud Security",
-        description: "Bulutli ma'lumotlar ombori va xavfsizlik portali.",
-        url: "https://cloud.dualstacksecurity.com" // Haqiqiy sayt manzili
+        name: "DualStackSecurity Link Detective",
+        description: "Linklarning xavfsizligini tekshirish, virus yoki fishingdan saqlanish.",
+        url: "https://DualStackSecurityDetective.netlify.app" // Haqiqiy sayt manzili
     },
     {
         id: 4,
