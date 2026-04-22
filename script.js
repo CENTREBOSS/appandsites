@@ -3,21 +3,21 @@ const database = [
     {
         id: 1,
         type: "app", // 'app' - bu ilova uchun
-        name: "DualStack Secure Mobile",
-        description: "Mobil qurilmalar uchun kuchaytirilgan xavfsizlik ilovasi.",
-        url: "./files/dualstack-secure.apk" // APK faylingizning saytdagi manzili
+        name: "Tez kunda",
+        description: "Tez kunda",
+        url: "Tez kunda" // APK faylingizning saytdagi manzili
     },
     {
         id: 2,
         type: "app",
-        name: "DualStack VPN 2023",
-        description: "Korporativ tarmoqqa xavfsiz ulanish uchun VPN mijoz.",
-        url: "./files/dualstack-vpn.apk"
+        name: "Tez kunda",
+        description: "Tez kunda",
+        url: "Tez kunda"
     },
     {
         id: 3,
         type: "site", // 'site' - bu veb-sayt uchun
-        name: "DualStackSecurity Link Detective",
+        name: "Tez kunda",
         description: "Linklarning xavfsizligini tekshirish, virus yoki fishingdan saqlanish.",
         url: "https://https://dualstacklink.vercel.app/" // Haqiqiy sayt manzili
     },
