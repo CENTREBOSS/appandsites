@@ -1,111 +1,158 @@
+/* Asosiy sozlamalar va ranglar */
 :root {
-    --bg-color: #0b0e14;
-    --primary: #8a2be2; /* Purple */
-    --secondary: #ff4d4d; /* Red */
-    --accent: #00d4ff; /* Blue */
-    --text-color: #ffffff;
+    --purple: #6b21a8;
+    --red: #e11d48;
+    --blue: #1d4ed8;
+    --dark-bg: #0f172a;
+    --light-text: #f8fafc;
+    --card-bg: #1e293b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    scroll-behavior: smooth;
+    background-color: var(--dark-bg);
+    color: var(--light-text);
+    line-height: 1.6;
 }
 
-header {
-    padding: 20px 5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: linear-gradient(90deg, var(--primary), var(--secondary));
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-}
-
-.logo { font-size: 24px; font-weight: bold; text-transform: uppercase; }
-.logo span { color: var(--accent); }
-
-nav a {
-    color: white;
-    text-decoration: none;
-    margin-left: 20px;
-    font-weight: 500;
-}
-
+/* Header dizayni (Gradient ranglar) */
 .hero {
+    background: linear-gradient(135deg, var(--purple), var(--red), var(--blue));
+    padding: 60px 20px;
     text-align: center;
-    padding: 100px 20px;
-    background: radial-gradient(circle, #1a1a2e 0%, #0b0e14 100%);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
-h2 {
-    text-align: center;
-    color: var(--accent);
-    margin-top: 50px;
+.logo {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
 }
 
-.grid-container {
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Bo'limlar dizayni */
+.section {
+    margin-bottom: 50px;
+}
+
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--purple);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* Karta (Grid) dizayni */
+.cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-    padding: 40px 5%;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
 }
 
 .card {
-    background: #161b22;
-    border: 1px solid var(--primary);
+    background-color: var(--card-bg);
     padding: 20px;
-    border-radius: 15px;
-    text-align: center;
-    transition: 0.3s;
+    border-radius: 10px;
+    border-top: 4px solid var(--blue);
+    transition: transform 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 0 20px var(--primary);
-    border-color: var(--accent);
+    transform: translateY(-5px);
+    border-top-color: var(--red);
 }
 
+.card h3 {
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #cbd5e1;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+/* Tugmalar */
 .btn {
     display: inline-block;
-    padding: 10px 25px;
-    background: linear-gradient(45deg, var(--primary), var(--accent));
-    color: white;
-    text-decoration: none;
+    padding: 10px 20px;
     border-radius: 5px;
-    margin-top: 15px;
-    cursor: pointer;
-    border: none;
-}
-
-.support-section {
-    padding: 50px 5%;
-    background: #1a1a2e;
+    text-decoration: none;
+    font-weight: bold;
     text-align: center;
+    transition: opacity 0.3s;
+    border: none;
+    cursor: pointer;
 }
 
-form {
-    max-width: 500px;
-    margin: 0 auto;
+.btn:hover {
+    opacity: 0.8;
+}
+
+.btn-download {
+    background-color: var(--purple);
+    color: white;
+}
+
+.btn-visit {
+    background-color: var(--blue);
+    color: white;
+}
+
+.btn-primary {
+    background-color: var(--red);
+    color: white;
+    width: 100%;
+}
+
+/* Support Form dizayni */
+.support-section {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 10px;
+    border-left: 5px solid var(--red);
+}
+
+.support-form {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    margin-top: 20px;
 }
 
-input, textarea {
+.support-form input,
+.support-form textarea {
+    width: 100%;
     padding: 12px;
-    background: #0b0e14;
-    border: 1px solid var(--secondary);
-    color: white;
     border-radius: 5px;
+    border: 1px solid #475569;
+    background-color: #0f172a;
+    color: white;
+    outline: none;
 }
 
-button[type="submit"] {
-    background: var(--secondary);
-    color: white;
-    border: none;
-    padding: 15px;
-    cursor: pointer;
-    font-weight: bold;
+.support-form input:focus,
+.support-form textarea:focus {
+    border-color: var(--purple);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #020617;
+    margin-top: 40px;
 }
