@@ -17,14 +17,14 @@ const database = [
     {
         id: 3,
         type: "site", // 'site' - bu veb-sayt uchun
-        name: "Tez kunda",
+        name: "DSS - Link tekshiruvchi",
         description: "Linklarning xavfsizligini tekshirish, virus yoki fishingdan saqlanish.",
         url: "https://dualstacklink.vercel.app/" // Haqiqiy sayt manzili
     },
     {
         id: 4,
         type: "site",
-        name: "DualStackSecurity INFO",
+        name: "DSS - Info",
         description: "DSS haqida ma'lumotlar.",
         url: "https://DualStackSecurity.vercel.app"
     }
